@@ -23,8 +23,8 @@ jobs:
 
     # Build the Docker image
     - name: Build Docker image
-      run: docker build -t your-dockerhub-username/your-repo-name:latest .
+      run: docker build -t Duck333/runpod-worker-comfy-docker:latest .
 
     # Push the Docker image to Docker Hub
     - name: Push Docker image
-      run: docker push your-dockerhub-username/your-repo-name:latest
+      run: docker push Duck333/runpod-worker-comfy-docker:latest
