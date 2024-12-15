@@ -31,7 +31,7 @@ RUN pip install comfy-cli
 RUN /usr/bin/yes | comfy --workspace /comfyui install --cuda-version 11.8 --nvidia --version 0.2.7
 
 # Change working directory to ComfyUI
-WORKDIR /comfyui
+WORKDIR /ComfyUI
 
 # Install runpod
 RUN pip install runpod requests
