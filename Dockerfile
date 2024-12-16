@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Prefer binary wheels over source distributions for faster pip installations
 ENV PIP_PREFER_BINARY=1
 # Ensures output from python is printed immediately to the terminal without buffering
-ENV PYTHONUNBUFFERED=1 
+ENV PYTHONUNBUFFERED=1
 # Speed up some cmake builds
 ENV CMAKE_BUILD_PARALLEL_LEVEL=8
 
@@ -90,7 +90,9 @@ RUN if [ "$MODEL_TYPE" = "sdxl" ]; then \
 FROM base as final
 
 # Copy models from stage 2 to the final image
-COPY --from=downloader /comfyui/models /comfyui/models
+RUN cp -rf /workspace/ComfyUI/models/* /comfyui/models/
+
+RUN ln -s /data/comfyui/output /comfyui/output
 
 # Start container
 CMD ["/start.sh"]
