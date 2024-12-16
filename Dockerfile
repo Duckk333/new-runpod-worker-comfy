@@ -90,9 +90,7 @@ RUN if [ "$MODEL_TYPE" = "sdxl" ]; then \
 FROM base as final
 
 # Copy models from stage 2 to the final image
-RUN cp -rf /workspace/ComfyUI/models/* /comfyui/models/
-
-RUN ln -s /data/comfyui/output /comfyui/output
+COPY --from=downloader /comfyui/models /comfyui/models
 
 # Start container
 CMD ["/start.sh"]
